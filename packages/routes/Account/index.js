@@ -18,12 +18,13 @@ import * as IndexDirective from './__directive__'
  */
 import IndexGraph from './index.graphql'
 import IndexDirectiveGraph from './index.directive.graphql'
+import IndexEnumGraph from './index.enum.graphql'
 
 
 /*
  * GLOBALS
  */
-const typeDefs = mergeTypeDefs([IndexGraph, IndexDirectiveGraph])
+const typeDefs = mergeTypeDefs([IndexGraph, IndexEnumGraph, IndexDirectiveGraph])
 const resolvers = IndexResolver
 const Mutation = IndexMutation
 const Subscription = IndexSubscription
@@ -34,3 +35,5 @@ const Directive = IndexDirective
  * EXPORTS
  */
 export default { resolvers, Mutation, typeDefs, Subscription, Directive }
+
+

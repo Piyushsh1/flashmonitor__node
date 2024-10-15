@@ -13,12 +13,6 @@ require('graphql-import-node/register')
 
 
 /*
- * SIBLINGS
- */
-const _WWW = require(require('path').resolve(__dirname, './packages/www/http/'))
-
-
-/*
  * SERVER
  */
 const _Server = async () => {
@@ -96,10 +90,10 @@ const _Server = async () => {
     }
 
     // Style guide.
-    _Debug('Bootstrapping WWW and SMPP.')
+    _Debug('Bootstrapping monitoring tool.')
 
-    // Spin up WWW and SMPP.
-    await _WWW()
+    // Spin up WWW.
+    require(require('path').resolve(__dirname, './packages/www/http/'))
 
     // Report success.
     return void 0
@@ -117,3 +111,4 @@ const _Server = async () => {
  * EXPORTS
  */
 _Server().catch(e => __Debug('Boot')(`Something went wrong. found error: ${e}`))
+

@@ -24,9 +24,6 @@ type Account {
   message: String,
   status: String,
   _totalCount: Int,
-  CustomerLogin: [Customer],
-  VendorLogin: [Vendor],
-  AccessToken: [AccessToken]
 }
 
 

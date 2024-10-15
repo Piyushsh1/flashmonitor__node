@@ -24,7 +24,6 @@ import * as RootScalars from './__scalar__'
 import MainGraph from './index.graphql'
 import MainDirectiveGraph from './index.directive.graphql'
 import MainScalarGraph from './index.scalar.graphql'
-import MainEnumGraph from './index.enum.graphql'
 
 
 /*
@@ -44,7 +43,6 @@ const typeDefs = makeExecutableSchema({
     MainGraph,
     MainScalarGraph,
     MainDirectiveGraph,
-    MainEnumGraph,
     Account.typeDefs,
     Platform.typeDefs,
     astFromDirective(GraphQLLiveDirective)
