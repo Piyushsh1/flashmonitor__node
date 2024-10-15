@@ -1,0 +1,39 @@
+#
+# GRAPH
+#
+type Platform {
+  id: ID
+  createdAt: DateTime
+  updatedAt: DateTime
+  displayName: String
+  logo: String
+  copyright: String
+  totalUndeliverable: Int
+  totalPending: Int
+  totalFailed: Int
+  totalDelivered: Int
+  totalCutting: Int
+  configuration: JSON
+  message: String
+  status: String
+}
+
+#
+# RESOLVER
+#
+extend type Mutation {
+  PlatformUpsert(
+    displayName: String
+    copyright: String
+    logo: String
+  ): Platform! @rateLimit(window: "1s", max: 20, message: "RATE_LIMIT")
+  PlatformConfiguration(accountId: ID!, configuration: JSON!): Platform!
+    @rateLimit(window: "1s", max: 20, message: "RATE_LIMIT")
+}
+extend type Query {
+  PlatformRead: [Platform!]!
+    @rateLimit(window: "1s", max: 20, message: "RATE_LIMIT")
+  PlatformConfiguration: Platform!
+    @isAuthenticated
+    @rateLimit(window: "1s", max: 20, message: "RATE_LIMIT")
+}

@@ -1,0 +1,5 @@
+{
+    "REQUIRE_JWT": "Expected jwt token but found undefined.",
+    "ACCOUNT_WITH_EMAIL_NOT_FOUND": "Account with given email address not found or is not registered.",
+    "INVALID_CREDENTIALS": "Please make sure account credentials are correct."
+}

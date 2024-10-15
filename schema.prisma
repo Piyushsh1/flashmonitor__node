@@ -1,0 +1,57 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["nativeDistinct", "relationJoins"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_POSTGRES_WRITE_URL")
+}
+
+model Account {
+  id                            String       @id @unique @default(cuid())
+  createdAt                     DateTime     @default(now()) @db.Timestamp(6)
+  updatedAt                     DateTime     @default(now()) @updatedAt @db.Timestamp(6)
+  isActive                      Boolean      @default(false)
+  fullName                      String?
+  password                      String?
+  isBlocked                     Boolean      @default(false)
+  thumbnailStoredAt             Json?        @db.Json
+  email                         String?      @unique(map: "email_1676392778723_index")
+  address                       String?
+  displayName                   String?
+  role                          String?
+  bio                           String?
+  twoFactorAuthentication       String?
+  is2FAEnabled                  Boolean?     @default(false)
+  isDeleted                     Boolean?     @default(false)
+  phone                         String?
+  technicalEmail                String?
+  referralId                    String?      @unique(map: "referralid_1677253409214_index")
+  profileCoverThumbnailStoredAt Json?        @db.Json
+  website                       String?
+  accountType                   ACCOUNT_TYPE @default(EMPLOYEE)
+  Platform                      Platform[]
+}
+
+model Platform {
+  id                 String   @id @unique @default(cuid())
+  createdAt          DateTime @default(now()) @db.Timestamp(6)
+  updatedAt          DateTime @default(now()) @updatedAt @db.Timestamp(6)
+  displayName        String?
+  copyright          String?
+  logo               String?
+  isDeleted          Boolean? @default(false)
+  totalUndeliverable Int?
+  totalPending       Int?
+  totalFailed        Int?
+  totalDelivered     Int?
+  totalCutting       Int?
+  configuration      Json?
+  Account__fk__      String?
+  Account            Account? @relation(fields: [Account__fk__], references: [id])
+}
+
+enum ACCOUNT_TYPE {
+  PLATFORM
+}

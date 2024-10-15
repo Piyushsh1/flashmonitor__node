@@ -1,0 +1,5 @@
+{
+  "CACHED_PATH_REQUIRED": "It seems that uploaded files are missing cache. Please check if files are cached successfully.",
+  "UPLOAD_FAILED": "Something went wrong failed to upload files to server.",
+  "UPLOAD_MISSING": "It seems that you are not uploading any file. or expected files during upload but found undefined."
+}

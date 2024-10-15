@@ -1,0 +1,17 @@
+{
+  "REQUIRED_FILES": "Expected files which needs to be uploaded but it seems that you haven't passed any files and FileManager run for uploading.",
+  "FAILED_TO_REMOVE_FILE": "Failed to remove given file. Something went wrong.",
+  "EXPECTED_UPLOAD_PATH": "Expected upload path for given file but got undefined.",
+  "REQUIRE_REQUEST_HEADERS": "Request headers are required but found none.",
+  "FAULTY_CLIENT": "Something went wrong with client. either configuration is not right or api is down.",
+  "PLEASE_PROVIDE_LOCATION_TO_UPLOAD": "Make sure that you pass where to upload option to the constructor",
+  "UPLOAD": {
+    "UPLOAD_FAILED": "Something went wrong FileManager failed to upload files",
+    "REQUIRED_AWS_CREDENTIALS": "It seems that you are trying to access AWS. but credentials are missing. Please make sure that credentials are passed before accessing AWS"
+  },
+  "REMOVEUPLOAD": {
+    "MISSING_STORAGE_LOCATION": "It seems that location is missing for file you are trying to remove.",
+    "EXPECTED_PATH_AND_STORAGE": "RemoveUpload expected path and storage object for given file.",
+    "REMOVE_FAILED": "Failed to remove given file from aws."
+  }
+}

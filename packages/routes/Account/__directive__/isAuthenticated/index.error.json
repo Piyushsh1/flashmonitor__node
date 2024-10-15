@@ -1,0 +1,4 @@
+{
+  "REQUIRE_ACCESS_TOKEN": "Require access token to be passed in the header",
+  "UNAUTHORIZED_ACCESS": "Unauthorized access"
+}

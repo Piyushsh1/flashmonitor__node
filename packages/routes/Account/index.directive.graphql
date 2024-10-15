@@ -1,0 +1,4 @@
+#
+# DIRECTIVE
+#
+directive @isAuthenticated(accountType: ACCOUNT_TYPE, requireToken: Boolean) on FIELD_DEFINITION

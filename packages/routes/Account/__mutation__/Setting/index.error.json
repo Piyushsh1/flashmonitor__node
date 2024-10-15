@@ -1,0 +1,5 @@
+{
+  "ACCOUNT_DISPLAY_NAME_ALREADY_EXISTS": "Username already exists. Please choose different username.",
+  "FAILED_TO_FIND_ACCOUNT": "Expected account for given id but found undefined.",
+  "NO_DATA_TO_UPDATE": "No data to update."
+}

@@ -1,0 +1,4 @@
+{
+  "EXPECTED_ACCOUNT_DETAILS": "Expected Account details but found undefined.",
+  "DELETE_RESTRICTED": "You are not allowed to delete this record."
+}

@@ -1,0 +1,56 @@
+definitions:
+  services:
+    docker:
+      memory: 2048
+pipelines:
+  branches:
+    release/red:
+      - step:
+          services:
+          - docker
+          name: Deploy to Docker Hub
+          script:
+          - export IMAGE_NAME=smsflash/smpp-node:latest
+          - docker build -t $IMAGE_NAME .
+          - docker login --username $SF_DOCKER_HUB_USERNAME --password $SF_DOCKER_HUB_PASSWORD
+          - docker push $IMAGE_NAME
+      - step:
+          name: Deploy to Digital Ocean
+          script:
+          - export IMAGE_NAME=smsflash/smpp-node:latest
+          - pipe: atlassian/ssh-run:0.2.2
+            variables:
+              SSH_USER: $SF_SSH_USER_RED
+              SERVER: $SF_SSH_SERVER_RED
+              COMMAND: >
+                docker stop $CONTAINERS_TO_STOP
+                docker pull $IMAGE_NAME;
+                docker run --network host -p $SF_SERVER_PORT_RED:$SF_SERVER_PORT_RED -d  $IMAGE_NAME;
+                docker system prune -f;    
+          services:
+          - docker
+    release/black:
+      - step:
+          services:
+          - docker
+          name: Deploy to Docker Hub
+          script:
+          - export IMAGE_NAME=smsflash/smpp-node:latest
+          - docker build -t $IMAGE_NAME .
+          - docker login --username $SF_DOCKER_HUB_USERNAME --password $SF_DOCKER_HUB_PASSWORD
+          - docker push $IMAGE_NAME
+      - step:
+          name: Deploy to Digital Ocean
+          script:
+          - export IMAGE_NAME=smsflash/smpp-node:latest
+          - pipe: atlassian/ssh-run:0.2.2
+            variables:
+              SSH_USER: $SF_SSH_USER_BLACK
+              SERVER: $SF_SSH_SERVER_BLACK
+              COMMAND: >
+                docker stop $CONTAINERS_TO_STOP
+                docker pull $IMAGE_NAME;
+                docker run --network host -p $SF_SERVER_PORT_BLACK:$SF_SERVER_PORT_BLACK -d  $IMAGE_NAME;
+                docker system prune -f;    
+          services:
+          - docker

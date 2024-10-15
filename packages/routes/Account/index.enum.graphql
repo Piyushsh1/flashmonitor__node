@@ -1,0 +1,6 @@
+#
+# ENUM
+#
+enum ACCOUNT_TYPE {
+  PLATFORM
+}

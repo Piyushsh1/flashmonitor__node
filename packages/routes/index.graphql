@@ -1,0 +1,22 @@
+#
+# QUERY
+#
+type Query {
+  createdAt: DateTime
+}
+
+
+#
+# RESOLVER
+#
+type Mutation {
+  createdAt: DateTime
+}
+
+
+#
+# SUBSCRIPTION
+#
+type Subscription {
+  createdAt: DateTime
+}

@@ -1,0 +1,94 @@
+"""
+# Date time scalar for handling Date.now()
+# format
+"""
+scalar DateTime
+scalar Date
+scalar Duration
+scalar LocalDate
+scalar LocalTime
+scalar LocalEndTime
+
+"""
+# Email validation scalar for only
+# valid emails.
+"""
+scalar EmailAddress
+
+
+"""
+# INT, FLOATS scalars for
+# handling scalar type's.
+"""
+scalar NegativeFloat
+scalar NegativeInt
+scalar NonNegativeFloat
+scalar NonNegativeInt
+scalar NonPositiveFloat
+scalar NonPositiveInt
+scalar PositiveFloat
+scalar PositiveInt
+scalar PhoneNumber
+scalar PostalCode
+scalar UnsignedFloat
+scalar UnsignedInt
+scalar URL
+scalar BigInt
+scalar Long
+scalar GUID
+scalar Image
+scalar Csv
+scalar Percentage
+
+
+"""
+# Color Code scalar for
+# handling color type's.
+"""
+scalar HexColorCode
+scalar HSL
+scalar HSLA
+scalar RGB
+scalar RGBA
+
+
+"""
+# Hardware's scalar value
+# for handling Hardware related
+# types like ip etc.
+"""
+scalar IP
+scalar IPv4
+scalar IPv6
+scalar ISBN
+scalar MAC
+scalar Port
+
+
+"""
+# USCurrency scalar.
+"""
+scalar USCurrency
+
+
+"""
+# Miscellaneous scalar types.
+"""
+scalar JSON
+scalar JSONObject
+scalar TimeZone
+scalar UUID
+scalar JWT
+scalar Latitude
+scalar Longitude
+scalar DID
+scalar CountryCode
+scalar Locale
+scalar RoutingNumber
+scalar Routing
+scalar AccountNumber
+scalar Cuid
+scalar SemVer
+scalar Location
+scalar File
+scalar Upload

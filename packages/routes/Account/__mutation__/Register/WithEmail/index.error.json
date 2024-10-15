@@ -1,0 +1,6 @@
+{
+  "FAILED_TO_CREATE_ACCOUNT": "Failed to create account in database. Please contact administration.",
+  "REQUIRE_JWT": "Expected jwt token but found undefined.",
+  "ACCOUNT_WITH_EMAIL_FOUND": "Account already registered with given email address.",
+  "ACCOUNT_DISPLAY_NAME_ALREADY_EXISTS": "Account displayName already exists."
+}

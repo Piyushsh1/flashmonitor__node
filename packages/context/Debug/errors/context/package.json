@@ -1,0 +1,12 @@
+{
+  "name": "debbugererrorscontext",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "niteshyadav@rootandleaves.com",
+  "license": "ISC",
+  "description": "",
+  "scripts": {
+    "clean": "rimraf node_modules pnpm-lock.yaml",
+    "upgrade": "ncu -u"
+  }
+}

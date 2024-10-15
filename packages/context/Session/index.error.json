@@ -1,0 +1,14 @@
+{
+  "SIGN": {
+    "EXPECTED_CACHE": "Expected cache in return but got undefined.",
+    "EXPECTED_PARAM": "Expected param for signing object but got undefined."
+  },
+  "VERIFY": {
+    "EXPECTED_JWT": "Expected jwt token. but return was undefined.",
+    "NOT_FOUND": "Expected JWT token but not found.",
+    "EXPECTED_PARAM": "Expected param for verifing token. but found undefined."
+  },
+  "KILL": {
+    "EXPECTED_PARAM": "Session kill expected id in param. but found undefined."
+  }
+}

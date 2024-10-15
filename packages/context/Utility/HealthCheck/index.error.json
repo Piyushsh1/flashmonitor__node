@@ -1,0 +1,12 @@
+{
+    "HOST_DOWN_OR_UNREACHABLE": "Host down or unreachable",
+    "ECONNREFUSED": "Connection refused",
+    "ECONNRESET": "Connection reset",
+    "ENOTFOUND": "Host not found",
+    "ETIMEDOUT": "Connection timed out",
+    "EHOSTUNREACH": "Host unreachable",
+    "EHOSTDOWN": "Host down",
+    "EPIPE": "Broken pipe",
+    "EAI_AGAIN": "Temporary name resolution failure",
+    "ECONNABORTED": "Connection aborted"
+}

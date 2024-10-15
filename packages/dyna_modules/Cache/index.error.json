@@ -1,0 +1,16 @@
+{
+  "SET": {
+    "REQUIRE_ID": "Require id for storing data into cache.",
+    "DIFFERENT_MERGE_TYPE": "Cannot merge different types.",
+    "EMPTY_DATA_CONTAINER": "Data container is empty."
+  },
+  "GET": {
+    "REQUIRE_ID": "Require id for storing data into cache."
+  },
+  "HM": {
+    "REQUIRE_ID": "Require id for storing data into cache."
+  },
+  "$EMIT": {
+    "TARGET_MESSAGE_MISSING": "Emit is missing target and message as param."
+  }
+}

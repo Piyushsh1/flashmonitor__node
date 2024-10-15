@@ -1,0 +1,56 @@
+#
+# GRAPH
+#
+type Account {
+  id: ID,
+  createdAt: DateTime,
+  updatedAt: DateTime,
+  isActive: Boolean,
+  fullName: String,
+  isBlocked: Boolean,
+  thumbnailStoredAt: JSON,
+  accountType: ACCOUNT_TYPE,
+  email: String,
+  displayName: String,
+  website: URL,
+  qrCode: String,
+  role: String,
+  bio: String,
+  token: String,
+  twoFactorAuthentication: String,
+  is2FAEnabled: Boolean,
+  referralId: ID,
+  profileCoverThumbnailStoredAt: JSON,
+  message: String,
+  status: String,
+  _totalCount: Int,
+  CustomerLogin: [Customer],
+  VendorLogin: [Vendor],
+  AccessToken: [AccessToken]
+}
+
+
+#
+# RESOLVER
+#
+extend type Mutation {
+  AccountLoginWithEmail(email: EmailAddress!, password: String!): Account!  @rateLimit(window: "1s", max: 20, message: "RATE_LIMIT"),
+  AccountRegisterWithEmail(email: EmailAddress!, password: String!, displayName: String!, referralId: ID, accountType: ACCOUNT_TYPE): Account! @rateLimit(window: "1s", max: 20, message: "RATE_LIMIT")
+  AccountIsBlockedWithEmailOrAccountId(accountId: ID, email: EmailAddress, isBlocked: Boolean!): Account! @isAuthenticated @rateLimit(window: "1s", max: 20, message: "RATE_LIMIT")
+  AccountSetting(accountId: ID, password: String, displayName: String, fullName: String, bio: String, email: EmailAddress, website: URL, isBlocked: Boolean, accountType: ACCOUNT_TYPE, is2FAEnabled: Boolean): Account! @isAuthenticated @rateLimit(window: "1s", max: 20, message: "RATE_LIMIT")
+  AccountUpload(accountId: ID, thumbnailStoredAt: Image, profileCoverThumbnailStoredAt: Image, dimensionsToChopIn: [JSON]): Account! @isAuthenticated @rateLimit(window: "1s", max: 20, message: "RATE_LIMIT")
+  AccountLogout(accountId: ID!): Account! @isAuthenticated @rateLimit(window: "1s", max: 20, message: "RATE_LIMIT")
+  AccountDelete(accountId: ID!): Account! @isAuthenticated @rateLimit(window: "1s", max: 20, message: "RATE_LIMIT")
+  AccountIsActive(accountId: ID, isActive: Boolean): Account! @isAuthenticated @rateLimit(window: "1s", max: 20, message: "RATE_LIMIT")
+  AccountForgotPasswordWithEmail(email: EmailAddress!, password: String!): Account! @rateLimit(window: "1s", max: 20, message: "RATE_LIMIT")
+  AccountTwoFactorAuthenticationCreate(email: EmailAddress!, token: String!): Account! @rateLimit(window: "1s", max: 30, message: "RATE_LIMIT")
+  AccountTwoFactorAuthenticationDelete(email: EmailAddress!): Account! @rateLimit(window: "1s", max: 30, message: "RATE_LIMIT")
+}
+extend type Query {
+  AccountRead(accountType: ACCOUNT_TYPE, accountId: ID, emailId: EmailAddress, referralId: ID, take: PositiveInt, skip: Int, search: String): [Account!]! @isAuthenticated @rateLimit(window: "1s", max: 20, message: "RATE_LIMIT")
+  AccountSearch(search: String!): [Account!]! @isAuthenticated @rateLimit(window: "1s", max: 20, message: "RATE_LIMIT")
+  AccountReadTwoFactorAuth(accountId: ID!): Account! @isAuthenticated @rateLimit(window: "1s", max: 20, message: "RATE_LIMIT")
+}
+extend type Subscription {
+  AccountRead: Account! @isAuthenticated @rateLimit(window: "1s", max: 20, message: "RATE_LIMIT")
+}

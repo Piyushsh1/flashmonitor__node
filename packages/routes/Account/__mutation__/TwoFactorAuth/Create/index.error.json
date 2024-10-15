@@ -1,0 +1,5 @@
+{
+  "INVALID_2FA_TOKEN": "Invalid 2fa token. Please enter a valid 2fa token.",
+  "ACCOUNT_WITH_EMAIL_NOT_FOUND": "Account with email not found.",
+  "ACCOUNT_IS_BLOCKED": "Account is blocked."
+}

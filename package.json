@@ -1,0 +1,99 @@
+{
+  "name": "smpp__server",
+  "version": "1.21.1",
+  "private": true,
+  "lint-staged": {
+    "*.{js,md, json}": [
+      "eslint --fix"
+    ]
+  },
+  "pnpm": {
+    "overrides": {
+      "graphql": "16.8.0"
+    }
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "pre-commit": "lint-staged && pnpm run build",
+    "clean": "pnpm recursive run clean && rimraf node_modules pnpm-lock.yaml",
+    "pm2": "pnpm run build && pm2 start ./.build/index.js --node-args='--max-old-space-size=24576'",
+    "dev": "export NODE_ENV='DEVELOPMENT' && NODE_OPTIONS='--max-old-space-size=24576' && DEBUG=*,-babel-watch:*,*pdu.command.out*,-babel,-babel:*,-prisma:*,-prisma:client:*,-express:*,-nodemon,-body-parser:json,-nodemon:*,-babel-watch:*,-winston:*,-ioredis:*,-nodemon::*,-snapdragon:*,-prisma-client,-finalhandler,-winston:create-logger,-follow-redirects babel-watch index.js",
+    "upgrade": "pnpm recursive run upgrade",
+    "copy::configuration": "cp package.json pnpm-workspace.yaml schema.prisma .env ./.build",
+    "copy::files": "npx babel index.js config.js .env client-identity.p12 ca.key ca.pem --out-dir ./.build --copy-files --ignore node_modules",
+    "prebuild": "rm -rf ./.build && mkdir -p ./.build && pnpm run copy::files && pnpm run copy::configuration && pnpm recursive run build && pnpm install",
+    "build": "pnpm run prebuild && cd ./.build && pnpm install --shamefully-hoist --ignore-scripts && npx prisma generate",
+    "docz::build": "rm -rf ./docs/ && jsdoc -c .jsdoc.json -r .",
+    "docz::start": "cd ./docs && http-server ./"
+  },
+  "dependencies": {
+    "@babel/eslint-parser": "7.23.9",
+    "@babel/plugin-proposal-pipeline-operator": "7.23.3",
+    "@eslint/compat": "^1.1.1",
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.7.0",
+    "@prisma/client": "5.18.0",
+    "app-root-path": "3.1.0",
+    "debug": "4.3.4",
+    "dotenv": "16.4.1",
+    "enum": "3.0.4",
+    "eslint-config-semistandard": "17.0.0",
+    "eslint-config-standard": "17.1.0",
+    "eslint-plugin-import": "2.29.1",
+    "eslint-plugin-n": "15.7.0",
+    "eslint-plugin-promise": "6.1.1",
+    "esm": "^3.2.25",
+    "fix-esm": "^1.0.1",
+    "fs-capacitor": "8.0.0",
+    "globals": "^15.8.0",
+    "graphql-import-node": "0.0.5",
+    "grunt-jsdoc": "2.4.1",
+    "gsm": "^0.1.4",
+    "htmlparser": "1.7.7",
+    "mcc-mnc-list": "1.1.11",
+    "nanolith": "^0.4.6",
+    "prisma": "5.18.0",
+    "rc-parser": "1.0.2",
+    "rimraf": "5.0.5",
+    "vercel": "^37.2.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.23.9",
+    "@babel/core": "7.23.9",
+    "@babel/node": "7.23.9",
+    "@babel/plugin-proposal-export-default-from": "7.23.3",
+    "@babel/plugin-proposal-export-namespace-from": "7.18.9",
+    "@babel/plugin-proposal-object-rest-spread": "7.20.7",
+    "@babel/plugin-proposal-partial-application": "7.23.3",
+    "@babel/plugin-proposal-throw-expressions": "7.23.3",
+    "@babel/plugin-syntax-class-properties": "7.12.13",
+    "@babel/plugin-syntax-export-default-from": "7.23.3",
+    "@babel/plugin-transform-modules-commonjs": "7.23.3",
+    "@babel/plugin-transform-runtime": "7.23.9",
+    "@babel/plugin-transform-shorthand-properties": "7.23.3",
+    "@babel/polyfill": "7.12.1",
+    "@babel/preset-env": "7.23.9",
+    "@babel/register": "7.23.7",
+    "@babel/runtime": "7.23.9",
+    "babel-eslint": "10.1.0",
+    "babel-loader": "9.1.3",
+    "babel-node": "0.0.1-security",
+    "babel-plugin-dynamic-import-node": "2.3.3",
+    "babel-plugin-inline-json-import": "0.3.2",
+    "babel-plugin-module-resolver": "5.0.0",
+    "babel-plugin-root-import": "6.6.0",
+    "babel-watch": "7.8.1",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-prettier": "5.1.3",
+    "husky": "8.0.3",
+    "lint-staged": "10.4.0",
+    "npm": "10.4.0",
+    "npm-check-updates": "16.14.14",
+    "pnpm": "8.15.0"
+  },
+  "engines": {
+    "node": "20.5.0"
+  }
+}

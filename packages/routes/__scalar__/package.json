@@ -1,0 +1,13 @@
+{
+  "name": "routesscalar",
+	"version": "1.0.0",
+	"main": "index.js",
+	"author": "niteshyadav@rootandleaves.com",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"routesscalarcsv": "workspace:*",
+		"routesscalarimage": "workspace:*",
+		"routesscalarpercentage": "workspace:*"
+	}
+}

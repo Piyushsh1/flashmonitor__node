@@ -1,0 +1,4 @@
+#
+# DIRECTIVE
+#
+directive @rateLimit(max: Int, window: String, message: String) on FIELD_DEFINITION
