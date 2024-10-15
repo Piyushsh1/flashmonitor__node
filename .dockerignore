@@ -1,0 +1,14 @@
+# auto generated
+node_modules
+dist
+.history
+.dist
+.vscode
+
+# logs and lock files
+npm-debug.log
+yarn.lock
+
+# docker files
+Dockerfile
+.dockerignore
